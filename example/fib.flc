@@ -1,0 +1,30 @@
+mks
+psh 10
+ins max
+psh 2
+ins counter
+psh 0
+psh 1
+:l
+pop
+cpy
+mov 1
+mem
+mem
+cng 1
+mov 0
+cng 0
+add
+get counter
+psh 1
+add
+ins counter
+get max
+get counter
+cmp
+psh 1
+sub
+jmp :l
+prt
+psh 10
+chr

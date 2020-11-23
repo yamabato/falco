@@ -1,0 +1,22 @@
+mks
+cng 1
+
+stn
+ins char
+
+psh 10
+inp
+
+cng 0
+
+get char
+cng
+
+:print
+chr
+len
+psh 0
+cmp
+psh 1
+sub
+jmp :print

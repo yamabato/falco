@@ -1,0 +1,21 @@
+psh 10
+psh 🇺🇳
+psh 10
+psh こんにちは世界
+psh 10
+psh Hello World!
+
+len
+pop
+:l
+chr
+mem
+psh 1
+sub
+cpy
+pop
+psh 0
+cmp
+psh 1
+sub
+jmp :l

@@ -1,0 +1,34 @@
+速度比較
+
+フィボナッチ数再帰なし(50番目を求め表示する)
+
+Falco
+    ./falco fib.flc
+    0.011s
+
+Go
+    go run fib_go.go
+    0.555s
+
+    go build fib_go.go
+    0.331s
+
+    ./fib_go
+    0.009s
+
+
+
+FizzBuzz(1~100)
+Falco
+    ./falco example/fizzbuzz.flc
+    0.014s
+
+Go
+    go run fizzbuzz_go.go
+    0.369s
+
+    go build fizzbuzz_go.go
+    0.343s
+
+    ./fizzbuzz_go
+    0.008s

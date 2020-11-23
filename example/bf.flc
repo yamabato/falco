@@ -1,0 +1,92 @@
+;brainf++kコンパイラ
+;stack0 データ部
+;stack1 データ部後半
+;stack2 前半スタック
+;stack3 後半スタック
+;stack4 関数呼び出しスタック
+;stack5 命令調査用
+;stakc6~ 自由
+
+psh 0
+jmp :init
+
+:print
+chr
+len
+psh 1
+cmp
+psh 1
+sub
+jmp :print
+pop
+psh 0
+mem
+jmp
+
+:instruction_execution
+psh >
+jmp :bf_inc_pointer
+
+:bf_inc_pointer
+cng 3
+get value
+cng 2
+ins value
+get counter
+psh 1
+add
+ins counter
+psh 0
+jmp :order_end
+
+:order_end
+cng 4
+pop
+psh 0
+mem
+jmp
+
+
+:init
+mks
+mks
+mks
+mks
+mks
+
+psh 0
+ins counter
+psh 0
+ins value
+psh 0
+ins order
+
+cng 4
+lnm
+psh 6
+add
+psh Program:
+psh 0
+jmp :print
+
+cng 0
+inp
+
+:main
+pop
+cng 5
+mem
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
+cng 4
+lnm
+psh 6
+add
+cng 5
+psh 0
+jmp :instruction_execution

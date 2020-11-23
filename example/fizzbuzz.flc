@@ -1,0 +1,86 @@
+psh 100
+ins max
+psh 1
+ins counter
+mks
+
+:main
+get counter
+cpy
+psh 5
+mod
+lnm
+psh 5
+add
+pop
+jmp :Buzz
+cng 0
+
+psh 3
+mod
+lnm
+psh 5
+add
+pop
+jmp :Fizz
+cng 0
+
+cng 1
+len
+cpy
+jmp :not_print
+pop
+:print
+chr
+mem
+psh 1
+sub
+cpy
+pop
+psh 0
+cmp
+psh 1
+sub
+jmp :print
+psh 0
+jmp :print_end
+
+:not_print
+del
+get counter
+prt
+
+:print_end
+psh 10
+chr
+
+cng 0
+
+get counter
+psh 1
+add
+cpy
+ins counter
+get max
+cmp
+psh 1
+sub
+jmp :END
+psh 0
+jmp :main
+
+:Buzz
+cng 1
+psh Buzz
+psh 0
+mem
+jmp
+
+:Fizz
+cng 1
+psh Fizz
+psh 0
+mem
+jmp
+
+:END

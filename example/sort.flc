@@ -1,0 +1,99 @@
+inp
+
+mks
+mks
+
+:sort
+cng 0
+pop
+len
+jmp :one_value
+
+:choice
+cpy
+mem
+cmp
+psh 1
+add
+jmp :change
+
+psh 0
+jmp :not_change
+
+:change
+mem
+mov 2
+pop
+
+:not_change
+mov 2
+len
+psh 0
+cmp
+psh 1
+sub
+jmp :choice
+
+mem
+mov 1
+
+cng 2
+:move
+mov 0
+len
+psh 0
+cmp
+psh 1
+sub
+jmp :move
+
+cng 0
+len
+psh 0
+cmp
+psh 1
+sub
+jmp :sort
+
+psh 0
+jmp :sort_end
+
+:one_value
+mem
+mov 1
+
+:sort_end
+
+cng 1
+:reverse
+cpy
+mov 0
+mov 2
+len
+psh 0
+cmp
+psh 1
+sub
+jmp :reverse
+
+cng 0
+:return_values
+mov 1
+len
+psh 0
+cmp
+psh 1
+sub
+jmp :return_values
+
+cng 2
+:print
+chr
+len
+psh 0
+cmp
+psh 1
+sub
+jmp :print
+psh 10
+chr

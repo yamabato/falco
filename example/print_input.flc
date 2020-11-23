@@ -1,0 +1,10 @@
+psh 10
+inp
+:l
+chr
+len
+psh 0
+cmp
+psh 1
+sub
+jmp :l
