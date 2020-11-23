@@ -10,6 +10,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+    "time"
 )
 
 func push_stack(stack *[]float64, value float64) {
@@ -330,6 +331,27 @@ func falco(code string, debug bool) {
 			if ok {
 				fmt.Print(value)
 			}
+        case "udt", "uyd", "utm":
+            t := time.Now().UTC()
+
+            year, month, day := t.Date()
+            yearday := t.YearDay()
+            hour, min, sec := t.Clock()
+            nano := t.Nanosecond()
+
+            switch order{
+            case "udt":
+                push_stack(&stacks[stack_n], float64(day))
+                push_stack(&stacks[stack_n], float64(month))
+                push_stack(&stacks[stack_n], float64(year))
+            case "uyd":
+                push_stack(&stacks[stack_n], float64(yearday))
+            case "utm":
+                push_stack(&stacks[stack_n], float64(nano))
+                push_stack(&stacks[stack_n], float64(sec))
+                push_stack(&stacks[stack_n], float64(min))
+                push_stack(&stacks[stack_n], float64(hour))
+            }
 
 		case "cmp", "add", "sub", "mul", "div", "pow", "mod":
 			if len(stacks[stack_n]) < 2 {
@@ -375,22 +397,21 @@ func falco(code string, debug bool) {
 
 				push_stack(&stacks[stack_n], value)
 			}
+            default:
+                fmt.Println("Error")
+        }
+    }
 
-		default:
-			fmt.Println("Error")
-		}
+        if debug {
+            fmt.Println("\n|END|")
+            fmt.Println(strings.Repeat("*", 50))
+            fmt.Println("|stacks  :", stacks)
+            fmt.Println("|map     :", dict)
+            fmt.Println("|memory  :", memory)
+            fmt.Println(strings.Repeat("*", 50))
+        }
 
-	}
-	if debug {
-		fmt.Println("\n|END|")
-		fmt.Println(strings.Repeat("*", 50))
-		fmt.Println("|stacks  :", stacks)
-		fmt.Println("|map     :", dict)
-		fmt.Println("|memory  :", memory)
-		fmt.Println(strings.Repeat("*", 50))
-	}
-
-}
+    }
 
 func main() {
 	flag.Parse()

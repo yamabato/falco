@@ -196,6 +196,24 @@ prt(print)
 
     スタックトップの値を数値としてそのまま表示する。改行しない。
 
+外界との連絡
+udt(universal time coordinated date)
+    udt
+
+    現在の世界協定時での日付を取得
+    スタックに上からYear,Month,Day
+
+uyd(UTC yearday)
+    uyd
+
+    世界協定時での今年たった日を取得
+
+utm(UTC time)
+    utm
+
+    世界協定時での時間を取得
+    スタックに上からHour,Minute,Second,Nanosecond
+
 関数関連
 cal(call)
     cal _abs
